@@ -33,6 +33,7 @@ const St = imports.gi.St;
 const GLib = imports.gi.GLib;
 const Pango = imports.gi.Pango;
 const PangoCairo = imports.gi.PangoCairo;
+const Cairo = imports.cairo
 const GObject = imports.gi.GObject;
 
 const PanelMenu = imports.ui.panelMenu;
@@ -79,7 +80,6 @@ let DiskSpaceUsageButton = GObject.registerClass (
             else {
                 this._indicator = null;
             }
-
 
             this.disk_usage_section = new PopupMenu.PopupBaseMenuItem({
                 reactive: false
@@ -136,13 +136,13 @@ let DiskSpaceUsageButton = GObject.registerClass (
                 this._indicator.destroy();
                 this._indicator = null;
             }
-
             this.update();
             if(this._sourceId > 0){
                 GLib.source_remove(this._sourceId);
             }
             this._sourceId = GLib.timeout_add_seconds(
                 GLib.PRIORITY_DEFAULT, 60, this.update.bind(this));
+
         }
 
         recalculate(devices){
@@ -209,7 +209,7 @@ let DiskSpaceUsageButton = GObject.registerClass (
         }
         update(){
             try{
-                let command = ['df', '-x', 'squashfs', '-x', 'tmpfs'];
+                let command = ['df', '-x', 'squashfs', '-x', 'tmpfs', '-x', 'vfat'];
                 let proc = Gio.Subprocess.new(
                     command,
                     Gio.SubprocessFlags.STDOUT_PIPE | Gio.SubprocessFlags.STDERR_PIPE
@@ -299,6 +299,8 @@ function isHex(str) {
     return /^#[0-9A-F]{6}$/i.test(str);
 }
 
+let diskSpaceUsageButton;
+
 let DiskSpaceIndicator = GObject.registerClass (
     class DiskSpaceIndicator extends PanelMenu.Button {
 
@@ -366,8 +368,6 @@ let DiskSpaceIndicator = GObject.registerClass (
 
     }
 )
-
-let diskSpaceUsageButton;
 
 function init(){
     Convenience.initTranslations();

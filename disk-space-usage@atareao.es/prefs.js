@@ -88,13 +88,13 @@ var AboutWidget = GObject.registerClass(
 
             let aboutLicense = new Gtk.Label({
                 label: "<small>" +
-                _("THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n") + 
-                _("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n") + 
-                _("FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n") + 
-                _("AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n") + 
-                _("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n") + 
-                _("FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS\n") + 
-                _("IN THE SOFTWARE.\n") + 
+                _("THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n") +
+                _("IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n") +
+                _("FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n") +
+                _("AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n") +
+                _("LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n") +
+                _("FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS\n") +
+                _("IN THE SOFTWARE.\n") +
                 "</small>",
                 use_markup: true,
                 justify: Gtk.Justification.CENTER
@@ -131,7 +131,7 @@ var DiskSpaceUsagePreferencesWidget = GObject.registerClass(
                                       "danger-color",
                                       PreferencesWidget.ColorSetting);
             appearanceSection.addGSetting(settings,
-                                          "show-indicator");
+                                        "show-indicator");
         let aboutPage = this.addPage(
             "about",
             _("About"),
