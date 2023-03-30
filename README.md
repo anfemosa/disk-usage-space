@@ -13,7 +13,7 @@
 
 ## Instalation
 
-### 🏠 [Homepage](https://www.atareao.es)
+### 🏠 [Homepage](https://atareao.es/aplicacion/estado-de-tus-particiones/)
 
 ## Install
 
